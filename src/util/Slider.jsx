@@ -2,17 +2,36 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import './Slider.css'; // Create and import a CSS file for custom styles
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
-
+import VideoThumbnail from './VideoThumbnail';
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(1);
   const slides = [
-    { id: 1, content: 'Slide 1' },
-    { id: 2, content: 'Slide 2' },
-    { id: 3, content: 'Slide 3' },
-    { id: 4, content: 'Slide 4' },
-    { id: 5, content: 'Slide 5' },
-    { id: 6, content: 'Slide 6' },
+    { 
+      "id": "1", 
+      "videoUrl": 'https://www.w3schools.com/html/mov_bbb.mp4', 
+      "thumbnailUrl": 'https://www.w3schools.com/html/pic_trulli.jpg', 
+      duration: '00.30' 
+    },
+    { 
+      "id": "2", 
+      "videoUrl": "https://www.w3schools.com/html/movie.mp4",
+      "thumbnailUrl": "https://www.w3schools.com/html/img_girl.jpg",
+      "duration": "01:00"
+    },
+
+    { 
+      "id": "3", 
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "thumbnailUrl": "https://www.w3schools.com/html/img_chania.jpg",
+      "duration": "00:45"
+    },
+    { 
+      "id": "4", 
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "thumbnailUrl": "https://dummyimage.com/600x400/000/fff",
+      "duration": "01:30"
+    },
   ];
 
   useEffect(() => {
@@ -53,9 +72,16 @@ const Slider = () => {
               </button>
             )}
             <div className="slider-content d-flex">
-              {getVisibleSlides().map((slide) => (
-                <div key={slide.id} className="slide-box col-12 col-md-4 text-center p-3">
-                  <div className="p-4 border rounded">{slide.content}</div>
+              {getVisibleSlides().map((slide, index) => (
+                
+                  <div key={index} className="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+
+                  <VideoThumbnail
+                    videoUrl={slide.videoUrl}
+                    thumbnailUrl={slide.thumbnailUrl}
+                    duration={slide.duration}
+                  />
+
                 </div>
               ))}
             </div>

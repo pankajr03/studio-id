@@ -15,7 +15,7 @@ const App = () => {
           <nav>
             <ul className="list-group gap-4 mt-8 border-0">
               <li><NavLink to="/" className="text-xl font-bold"><FaHome /> Home</NavLink></li>
-              <li ><NavLink to="/studio" className="text-xl font-bold"><FaVideo /> Vidio Studio</NavLink></li>
+              <li ><NavLink to="/studio" className="text-xl font-bold"><FaVideo /> Video Studio</NavLink></li>
               <li ><NavLink to="/agents" className="text-xl font-bold"><FaCommentDollar /> Agents</NavLink></li>
               <li ><NavLink to="/api" className="text-xl font-bold"><FaPaperPlane /> API</NavLink></li>
             </ul>
