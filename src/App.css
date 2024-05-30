@@ -55,3 +55,21 @@
     width: 33.3333%;
   }
 }
+
+.btn-icon {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.btn-icon.prev {
+  left: 10px;
+}
+
+.btn-icon.next {
+  right: 10px;
+}

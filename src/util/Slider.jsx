@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import './Slider.css'; // Create and import a CSS file for custom styles
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,10 +19,10 @@ const Slider = () => {
     const handleResize = () => {
       setSlidesPerView(window.innerWidth >= 768 ? 3 : 1);
     };
-    
+
     window.addEventListener('resize', handleResize);
     handleResize(); // Initial check
-    
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -44,7 +46,12 @@ const Slider = () => {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-12">
-          <div className="slider">
+          <div className="slider position-relative">
+            {currentIndex > 0 && (
+              <button className="btn btn-icon prev" onClick={handlePrev}>
+                <FaArrowAltCircleLeft size={40} />
+              </button>
+            )}
             <div className="slider-content d-flex">
               {getVisibleSlides().map((slide) => (
                 <div key={slide.id} className="slide-box col-12 col-md-4 text-center p-3">
@@ -52,18 +59,11 @@ const Slider = () => {
                 </div>
               ))}
             </div>
-            <div className="d-flex justify-content-between mt-3">
-              {currentIndex > 0 && (
-                <button className="btn btn-primary" onClick={handlePrev}>
-                  Prev
-                </button>
-              )}
-              {currentIndex < slides.length - slidesPerView && (
-                <button className="btn btn-primary" onClick={handleNext}>
-                  Next
-                </button>
-              )}
-            </div>
+            {currentIndex < slides.length - slidesPerView && (
+              <button className="btn btn-icon next" onClick={handleNext}>
+                <FaArrowAltCircleRight size={40} />
+              </button>
+            )}
           </div>
         </div>
       </div>
